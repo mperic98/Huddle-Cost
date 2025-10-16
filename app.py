@@ -11,7 +11,7 @@ AVG_HOURLY_RATE = float(os.environ.get("AVG_HOURLY_RATE", 80))
 
 # Initialize Slack app
 bolt_app = App(token=SLACK_BOT_TOKEN, signing_secret=SLACK_SIGNING_SECRET)
-app = Flask(__name__)
+flask_app = Flask(__name__)
 handler = SlackRequestHandler(bolt_app)
 
 # Store huddle data (in-memory; use DB if you want persistence)
@@ -49,5 +49,5 @@ def on_huddle_end(event, say):
     )
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=3000)
+    flask_app.run(host="0.0.0.0", port=3000)
 
